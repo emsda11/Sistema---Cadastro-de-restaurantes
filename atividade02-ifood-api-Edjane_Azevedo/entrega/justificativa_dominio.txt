@@ -1,0 +1,9 @@
+JUSTIFICATIVA DA ESCOLHA DO DOMÍNIO
+
+Foi escolhido um domínio inspirado no iFood por representar um cenário real, para atender aos requisitos 
+da atividade. 
+O sistema permite modelar clientes, restaurantes, produtos e pedidos, incluindo relacionamentos One-to-Many, 
+Many-to-One e Many-to-Many, além de regras de negócio para aplicações de delivery.
+
+A escolha também utiliza de persistência com JPA, uso de DTOs e registro de logs de auditoria em uma segunda 
+base de dados, sempre que novos registros são criados.

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini iFood - Gestão</title>
+  <link rel="stylesheet" href="estilo.css">
+  <script type="text/javascript"
+    src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=0a29XXHD90pnn6n0xrIqExfP0UHkgyhgdhWRLdTmmz28XfflbjvX7Yo7pNFxb43c2x-SHiWACr38F9KTdTZNQ15iHv_TKF5y30LXqB9X9buf7oAd2YzA43S9pHAVQUesiJ87pB773NaEPAG3etNnqpN2xVDZ8r35oYtLKnt_Le2eujduNS5Zf75Zic1F9eV5YBigJBBuP-pJUD3pA0ZBTepMysvMwzmK3AA79EjEQS-mo3EXOApwDnidrEdEh2aU9Juvm7YlE1xJAsA7LGKD1g"
+    charset="UTF-8"></script>
+</head>
+
+<body>
+  <header>
+    <h1>Mini iFood</h1>
+    <p>Interface para testar a API de clientes, restaurantes, produtos e pedidos.</p>
+  </header>
+
+  <main class="container">
+    <section class="grid">
+      <div class="card">
+        <h2>Cliente</h2>
+        <input id="clienteId" type="hidden">
+        <label>Nome</label>
+        <input id="clienteNome" placeholder="Ex.: Maria Silva" />
+        <label>Email</label>
+        <input id="clienteEmail" placeholder="Ex.: maria@email.com" />
+        <div class="actions">
+          <button onclick="criarCliente()">Criar cliente</button>
+          <button onclick="atualizarCliente()">Atualizar cliente</button>
+          <button class="btn-secondary" onclick="listarClientes()">Listar clientes</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Restaurante</h2>
+        <input id="restauranteId" type="hidden">
+        <label>Nome</label>
+        <input id="restauranteNome" placeholder="Ex.: Pizza Prime" />
+        <label>Categoria</label>
+        <input id="restauranteCategoria" placeholder="Ex.: Pizza" />
+        <div class="actions">
+          <button onclick="criarRestaurante()">Criar restaurante</button>
+          <button onclick="atualizarRestaurante()">Atualizar restaurante</button>
+          <button class="btn-secondary" onclick="listarRestaurantes()">Listar restaurantes</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Produto</h2>
+        <input id="produtoId" type="hidden">
+        <label>Nome</label>
+        <input id="produtoNome" placeholder="Ex.: Pizza Calabresa" />
+        <label>Preço</label>
+        <input id="produtoPreco" type="number" step="0.01" placeholder="Ex.: 39.90" />
+        <label>ID do restaurante</label>
+        <input id="produtoRestauranteId" type="number" placeholder="Ex.: 1" />
+        <div class="actions">
+          <button onclick="criarProduto()">Criar produto</button>
+          <button onclick="atualizarProduto()">Atualizar produto</button>
+          <button class="btn-secondary" onclick="listarProdutos()">Listar produtos</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Pedido</h2>
+        <input id="pedidoId" type="hidden">
+        <label>Nome do cliente</label>
+        <input id="pedidoClienteNome" placeholder="Ex.: Maria Silva" />
+        <label>IDs dos produtos</label>
+        <input id="pedidoProdutosIds" placeholder="Ex.: 1,2" />
+        <label>Status</label>
+        <input id="pedidoStatus" value="CRIADO" />
+        <div class="actions">
+          <button onclick="criarPedido()">Criar pedido</button>
+          <button onclick="atualizarPedido()">Atualizar pedido</button>
+          <button class="btn-secondary" onclick="listarPedidos()">Listar pedidos</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Listagem</h2>
+      <div class="toolbar">
+        <button onclick="listarClientes()">Clientes</button>
+        <button onclick="listarRestaurantes()">Restaurantes</button>
+        <button onclick="listarProdutos()">Produtos</button>
+        <button onclick="listarPedidos()">Pedidos</button>
+      </div>
+      <div id="lista" class="list">
+        <div class="empty">Clique em algum botão de listagem para carregar os dados.</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

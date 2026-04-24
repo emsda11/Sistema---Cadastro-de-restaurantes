@@ -1,0 +1,277 @@
+{
+  "info": {
+    "name": "Atividade 02 - API estilo iFood",
+    "_postman_id": "ifood-atividade-02",
+    "description": "Collection para testar a API com duas bases e auditoria.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Criar cliente",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Ana Silva\",\n  \"email\": \"ana@email.com\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/clientes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "clientes"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Criar restaurante",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Pizza Prime\",\n  \"categoria\": \"Pizza\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/restaurantes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "restaurantes"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Criar produto 1",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Pizza Calabresa\",\n  \"preco\": 39.9,\n  \"restauranteId\": 1\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/produtos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "produtos"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Criar produto 2",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"Refrigerante 2L\",\n  \"preco\": 12.5,\n  \"restauranteId\": 1\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/produtos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "produtos"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Criar pedido",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"clienteId\": 1,\n  \"status\": \"CRIADO\",\n  \"produtosIds\": [\n    1,\n    2\n  ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/pedidos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "pedidos"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Listar pedidos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/pedidos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "pedidos"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Buscar pedido por id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/pedidos/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "pedidos",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Buscar cliente por nome (JPQL)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/clientes/buscar?nome=Ana",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "clientes",
+            "buscar"
+          ],
+          "query": [
+            {
+              "key": "nome",
+              "value": "Ana"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Buscar restaurante por categoria (SQL nativo)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/restaurantes/categoria?nome=Pizza",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "restaurantes",
+            "categoria"
+          ],
+          "query": [
+            {
+              "key": "nome",
+              "value": "Pizza"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Buscar produtos por restaurante (JOIN FETCH)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/produtos/restaurante/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "produtos",
+            "restaurante",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Buscar produtos por preço mínimo (SQL nativo)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/produtos/preco-minimo?valor=20",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "produtos",
+            "preco-minimo"
+          ],
+          "query": [
+            {
+              "key": "valor",
+              "value": "20"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

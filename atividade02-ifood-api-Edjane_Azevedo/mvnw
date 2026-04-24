@@ -1,0 +1,20 @@
+#!/bin/sh
+BASEDIR=$(cd "$(dirname "$0")"; pwd)
+MAVEN_VERSION=3.9.9
+MAVEN_BASE_DIR="$HOME/.m2/wrapper/dists/apache-maven-$MAVEN_VERSION-bin"
+MAVEN_HOME="$MAVEN_BASE_DIR/apache-maven-$MAVEN_VERSION"
+MAVEN_ZIP="$MAVEN_BASE_DIR/apache-maven-$MAVEN_VERSION-bin.zip"
+
+if [ ! -x "$MAVEN_HOME/bin/mvn" ]; then
+  echo "Maven local nao encontrado. Baixando Maven $MAVEN_VERSION..."
+  mkdir -p "$MAVEN_BASE_DIR"
+  python3 - <<'PY'
+import urllib.request, os
+url='https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.9/apache-maven-3.9.9-bin.zip'
+out=os.path.expanduser('~/.m2/wrapper/dists/apache-maven-3.9.9-bin/apache-maven-3.9.9-bin.zip')
+urllib.request.urlretrieve(url, out)
+PY
+  unzip -o "$MAVEN_ZIP" -d "$MAVEN_BASE_DIR" >/dev/null
+fi
+
+exec "$MAVEN_HOME/bin/mvn" "$@"
